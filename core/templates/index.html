@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css\style.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Blog</title>
+</head>
+
+
+<body>
+    {% for blog in object_list %}
+
+   
+    
+    <div class="media mt-2">
+
+        <img width="300" height="320" class="align-self-start mr-4" src="{{blog.image.url}}" alt="Generic placeholder image">
+        <div class="media-body">
+      
+          <h5 class="mt-3">    <a href="{{blog.get_absolute_url}}">{{blog.title}}</a>
+          </h5>
+          <p>{{blog.content|slice:"100"}}</p>
+    
+    <small> {{blog.date}}</small><br>
+    <small>{{blog.writer}}</small>
+
+        </div>
+      </div>
+
+    {% endfor %}
+    
+</body>
+
+{% endblock %}
+</html>
